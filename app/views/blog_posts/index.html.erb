@@ -1,0 +1,26 @@
+# app/views/blog_posts/index.html.erb
+<div class="header">
+  Total: <%= @total %>
+</div>
+
+<%= @model.each do |blog_post| %>
+  <h2>
+    <%= blog_post.title %>
+  </h2>
+
+  <div class="created_at">
+    Posted at <%= blog_post.created_at %>
+  </div>
+
+  <div class="body">
+    <%= blog_post.body %>
+  </div>
+  <p>
+   <%= link_to "Edit", edit_blog_post_path(blog_post.id) %>
+  </p>
+  <p>
+   <%= button_to "Delete", blog_post_path(blog_post.id), method: :delete %>
+  </p>
+
+  <hr>
+<% end %>
